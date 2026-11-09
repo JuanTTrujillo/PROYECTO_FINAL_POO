@@ -1,5 +1,5 @@
 package co.edu.uniquindio;
 
-public enum ROL {
+public enum Rol {
     HUESPED, RECEPCIONISTA, ADMINISTRADOR;
 }
