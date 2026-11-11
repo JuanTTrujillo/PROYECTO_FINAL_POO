@@ -51,15 +51,19 @@ public class Huesped extends Persona implements Autenticable {
         return documento;
     }
     public String getTelefono() {
+
         return telefono;
     }
     public String getCorreo() {
+
         return correo;
     }
     public String getRutaFoto() {
+
         return rutaFoto;
     }
     public String getUsuario() {
+
         return usuario;
     }
 }

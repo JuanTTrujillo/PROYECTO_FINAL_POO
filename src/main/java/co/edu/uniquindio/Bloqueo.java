@@ -14,4 +14,19 @@ public record Bloqueo(LocalDate fechaInicio, LocalDate fechaFin, String motivo) 
         }
         return false;
     }
+
+    @Override
+    public LocalDate fechaInicio() {
+        return fechaInicio;
+    }
+
+    @Override
+    public LocalDate fechaFin() {
+        return fechaFin;
+    }
+
+    @Override
+    public String motivo() {
+        return motivo;
+    }
 }
