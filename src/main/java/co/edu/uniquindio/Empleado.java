@@ -58,10 +58,7 @@ public abstract class Empleado extends Persona implements Autenticable, Desactiv
 
         return telefono;
     }
-    public String getCorreo() {
-
-        return correo;
-    }
+    public String getCorreo() {return correo;}
     public String getUsuario() {
         return usuario;
     }
