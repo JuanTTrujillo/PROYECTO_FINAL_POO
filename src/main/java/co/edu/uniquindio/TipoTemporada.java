@@ -1,5 +1,5 @@
 package co.edu.uniquindio;
 
 public enum TipoTemporada {
-    EFECTIVO, TARJETA, TRANSFERENCIA
+    BAJA, MEDIA, ALTA
 }
