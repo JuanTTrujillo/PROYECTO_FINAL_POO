@@ -1,5 +1,6 @@
 package co.edu.uniquindio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Apartamento implements Desactivable {
@@ -92,6 +93,37 @@ public class Apartamento implements Desactivable {
         return estado;
     }
 
-// Falta: actualizar los datos del apartamento (nombre, dormitorios, capacidad, características)
-// Falta: cambiar las tarifas de las tres temporadas
-// Falta: agregar un bloqueo y revisar si tiene bloqueo en unas fechas
+    public void actualizarDatos(String nombre, int numeroDormitorios, int capacidadMaxima, ArrayList<String> caracteristicas) {
+        this.nombre = nombre;
+        this.numeroDormitorios = numeroDormitorios;
+        this.capacidadMaxima = capacidadMaxima;
+        this.caracteristicas = caracteristicas;
+    }
+
+    public boolean actualizarTarifas(int tarifaBaja, int tarifaMedia, int tarifaAlta) {
+        if (tarifaBaja <= 0 || tarifaMedia <= 0 || tarifaAlta <= 0) {
+            return false;
+        }
+        this.tarifaBaja = tarifaBaja;
+        this.tarifaMedia = tarifaMedia;
+        this.tarifaAlta = tarifaAlta;
+        return true;
+    }
+
+    public boolean agregarBloqueo(Bloqueo b) {
+        if (!b.fechaFin().isAfter(b.fechaInicio())) {
+            return false;
+        }
+        bloqueos.add(b);
+        return true;
+    }
+
+    public boolean tieneBloqueoEn(LocalDate entrada, LocalDate salida) {
+        for (int i = 0; i < bloqueos.size(); i++) {
+            if (bloqueos.get(i).interfiereCon(entrada, salida)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
