@@ -122,6 +122,7 @@ public class Apartamento implements Desactivable {
     }
 
     public int getCapacidadMaxima() {
+
         return capacidadMaxima;
     }
 
