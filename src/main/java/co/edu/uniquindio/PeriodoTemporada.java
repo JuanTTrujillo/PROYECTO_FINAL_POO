@@ -2,7 +2,7 @@ package co.edu.uniquindio;
 import java.time.LocalDate;
 
 public record PeriodoTemporada(
-        TipoTemporada tipoTemporada,
+        TipoTemporada  tipoTemporada,
         LocalDate fechaInicio,
         LocalDate fechaFin
 ) {
