@@ -1,7 +1,4 @@
-
-import co.edu.uniquindio.Autenticable;
-import co.edu.uniquindio.Persona;
-import co.edu.uniquindio.Rol;
+package co.edu.uniquindio;
 
 import java.time.LocalDate;
 

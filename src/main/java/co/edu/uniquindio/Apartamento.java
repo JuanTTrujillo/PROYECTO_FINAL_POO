@@ -77,21 +77,7 @@ public class Apartamento implements Desactivable {
         return activo;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getCapacidadMaxima() {
-        return capacidadMaxima;
-    }
-
-    public EstadoApartamento getEstado() {
-        return estado;
-    }
 
     public void actualizarDatos(String nombre, int numeroDormitorios, int capacidadMaxima, ArrayList<String> caracteristicas) {
         this.nombre = nombre;
@@ -120,10 +106,110 @@ public class Apartamento implements Desactivable {
 
     public boolean tieneBloqueoEn(LocalDate entrada, LocalDate salida) {
         for (int i = 0; i < bloqueos.size(); i++) {
-            if (bloqueos.get(i).interfiereCon(entrada, salida)) {
+            if (bloqueos.get(i).chocaCon(entrada, salida)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCapacidadMaxima() {
+        return capacidadMaxima;
+    }
+
+    public EstadoApartamento getEstado() {
+        return estado;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getNumeroDormitorios() {
+        return numeroDormitorios;
+    }
+
+    public void setNumeroDormitorios(int numeroDormitorios) {
+        this.numeroDormitorios = numeroDormitorios;
+    }
+
+    public void setCapacidadMaxima(int capacidadMaxima) {
+        this.capacidadMaxima = capacidadMaxima;
+    }
+
+    public int getTarifaBaja() {
+        return tarifaBaja;
+    }
+
+    public void setTarifaBaja(int tarifaBaja) {
+        this.tarifaBaja = tarifaBaja;
+    }
+
+    public ArrayList<String> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(ArrayList<String> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public int getTarifaMedia() {
+        return tarifaMedia;
+    }
+
+    public void setTarifaMedia(int tarifaMedia) {
+        this.tarifaMedia = tarifaMedia;
+    }
+
+    public int getTarifaAlta() {
+        return tarifaAlta;
+    }
+
+    public void setTarifaAlta(int tarifaAlta) {
+        this.tarifaAlta = tarifaAlta;
+    }
+
+    public String getMotivoFueraServicio() {
+        return motivoFueraServicio;
+    }
+
+    public void setMotivoFueraServicio(String motivoFueraServicio) {
+        this.motivoFueraServicio = motivoFueraServicio;
+    }
+
+    public void setEstado(EstadoApartamento estado) {
+        this.estado = estado;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public ArrayList<Bloqueo> getBloqueos() {
+        return bloqueos;
+    }
+
+    public void setBloqueos(ArrayList<Bloqueo> bloqueos) {
+        this.bloqueos = bloqueos;
+    }
+
+    public ArrayList<Novedad> getNovedades() {
+        return novedades;
+    }
+
+    public void setNovedades(ArrayList<Novedad> novedades) {
+        this.novedades = novedades;
     }
 }
