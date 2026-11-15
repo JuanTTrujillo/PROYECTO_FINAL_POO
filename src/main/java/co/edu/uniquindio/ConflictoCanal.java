@@ -1,4 +1,10 @@
 package co.edu.uniquindio;
 
-public record ConflictoCanal() {
+import java.time.LocalDate;
+
+public record ConflictoCanal(
+        String codigoExterno,
+        String motivo,
+        LocalDate fechaRegistro
+) {
 }
