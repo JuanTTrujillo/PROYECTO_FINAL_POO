@@ -46,6 +46,7 @@ public class Huesped extends Persona implements Autenticable {
         return Rol.HUESPED; }
 
     public String getDocumento() {
+
         return documento;
     }
     public String getTelefono() {
