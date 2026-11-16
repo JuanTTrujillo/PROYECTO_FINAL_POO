@@ -1,44 +1,65 @@
 package co.edu.uniquindio;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Main {
+public class CuentaPagar {
 
-    public static void main(String[] args) {
+    private ArrayList<Cargo> listaCargos;
+    private ArrayList<Pago> listaPagos;
 
-        Alojamiento alojamiento = new Alojamiento("Aparta-Suites UQ");
+    public CuentaPagar() {
+        listaCargos = new ArrayList<>();
+        listaPagos = new ArrayList<>();
+    }
 
-        Apartamento apto1 = new Apartamento("A101", "Suite Montaña", 2, 4, 80000, 100000, 130000);
-        Apartamento apto2 = new Apartamento("A102", "Suite Valle", 3, 6, 70000, 90000, 120000);
-        alojamiento.registrarApartamento(apto1);
-        alojamiento.registrarApartamento(apto2);
-
-        Administrador admin = new Administrador("Laura Gómez", LocalDate.of(1988, 4, 12), "1094001",
-                "3001112233", "laura@apartasuites.com", "admin", "admin123");
-        Recepcionista recepcionista = new Recepcionista("Carlos Ruiz", LocalDate.of(1997, 9, 3), "1094002",
-                "3004445566", "carlos@apartasuites.com", "recepcion", "recep123");
-        alojamiento.registrarEmpleado(admin);
-        alojamiento.registrarEmpleado(recepcionista);
-
-        Huesped huesped = new Huesped("Ana Torres", LocalDate.of(1995, 1, 20), "1094100",
-                "3107778899", "ana@correo.com", "ana", "ana123");
-        alojamiento.registrarHuesped(huesped);
-
-        ArrayList<Ocupante> ocupantes = new ArrayList<>();
-        ocupantes.add(new Ocupante("Juan Torres", LocalDate.of(1993, 6, 15)));
-        ocupantes.add(new Ocupante("Sofía Torres", LocalDate.of(2022, 3, 8)));
-
-        LocalDate entrada = LocalDate.now().plusDays(10);
-        LocalDate salida = entrada.plusDays(2);
-
-        int personasQuePagan = 0;
-        if (huesped.calcularEdad(entrada) >= 6) {
-            personasQuePagan++;
+    public void registrarCargo(Cargo cargo) {
+        if (cargo != null) {
+            listaCargos.add(cargo);
         }
-        for (int i = 0; i < ocupantes.size(); i++) {
-            if (ocupantes.get(i).calcularEdad(entrada) >= 6) {
-                personasQuePagan++;
-            }
+    }
+
+    public void registrarPago(Pago pago) {
+        if (pago != null) {
+            listaPagos.add(pago);
         }
+    }
+
+    public int calcularTotalCargos() {
+        int total = 0;
+
+        for (int i = 0; i < listaCargos.size(); i++) {
+            total += listaCargos.get(i).getMonto();
+        }
+
+        return total;
+    }
+
+    public int calcularTotalPagos() {
+        int total = 0;
+
+        for (int i = 0; i < listaPagos.size(); i++) {
+            total += listaPagos.get(i).getMonto();
+        }
+
+        return total;
+    }
+
+    public int calcularSaldo() {
+        return calcularTotalCargos() - calcularTotalPagos();
+    }
+
+    public ArrayList<Cargo> getListaCargos() {
+        return listaCargos;
+    }
+
+    public ArrayList<Pago> getListaPagos() {
+        return listaPagos;
+    }
+
+    public ArrayList<Pago> getPagos() {
+        return listaPagos;
+    }
+
+    public ArrayList<Cargo> getCargos() {
+        return listaCargos;
+    }
+}
