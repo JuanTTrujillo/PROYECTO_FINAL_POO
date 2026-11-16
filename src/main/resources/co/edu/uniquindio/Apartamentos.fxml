@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.ApartamentosController" spacing="10">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    <children>
+        <Label text="Apartamentos" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <ListView fx:id="lista" prefHeight="200" onMouseClicked="#cargarSeleccionado"/>
+        <Label text="Estado operativo:"/>
+        <HBox spacing="10">
+            <children>
+                <ComboBox fx:id="cbEstado" promptText="Estado"/>
+                <TextField fx:id="txtMotivo" promptText="Motivo (obligatorio si es fuera de servicio)"/>
+                <Button text="Cambiar estado" onAction="#cambiarEstado"/>
+            </children>
+        </HBox>
+        <Label text="Novedades:"/>
+        <HBox spacing="10">
+            <children>
+                <ComboBox fx:id="cbNovedad" promptText="Tipo"/>
+                <TextField fx:id="txtNovedad" promptText="Descripción de la novedad"/>
+                <Button text="Registrar novedad" onAction="#registrarNovedad"/>
+            </children>
+        </HBox>
+        <VBox fx:id="seccionAdmin" spacing="10">
+            <children>
+                <Label text="Bloqueos del apartamento seleccionado:"/>
+                <HBox spacing="10">
+                    <children>
+                        <Label text="Desde"/>
+                        <DatePicker fx:id="dpBloqueoInicio"/>
+                        <Label text="Hasta"/>
+                        <DatePicker fx:id="dpBloqueoFin"/>
+                        <TextField fx:id="txtMotivoBloqueo" promptText="Motivo del bloqueo"/>
+                        <Button text="Agregar bloqueo" onAction="#agregarBloqueo"/>
+                    </children>
+                </HBox>
+                <Label text="Crear o modificar apartamento" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <GridPane hgap="10" vgap="8">
+                    <children>
+                        <Label text="Código:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtCodigo" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                        <Label text="Dormitorios:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtDormitorios" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="Capacidad máxima:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <TextField fx:id="txtCapacidad" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                        <Label text="Características:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtCaracteristicas" promptText="balcón, jacuzzi, chimenea" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        <Label text="Tarifa baja:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtTarifaBaja" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        <Label text="Tarifa media:" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                        <TextField fx:id="txtTarifaMedia" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+                        <Label text="Tarifa alta:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtTarifaAlta" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
+                <HBox spacing="10">
+                    <children>
+                        <Button text="Crear apartamento" onAction="#crear"/>
+                        <Button text="Modificar seleccionado" onAction="#modificar"/>
+                        <Button text="Eliminar seleccionado" onAction="#eliminar"/>
+                    </children>
+                </HBox>
+                <Label text="Temporadas (las fechas sin temporada son BAJA)" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <HBox spacing="10">
+                    <children>
+                        <ComboBox fx:id="cbTemporada" promptText="Temporada"/>
+                        <Label text="Desde"/>
+                        <DatePicker fx:id="dpTemporadaInicio"/>
+                        <Label text="Hasta"/>
+                        <DatePicker fx:id="dpTemporadaFin"/>
+                        <Button text="Agregar temporada" onAction="#agregarTemporada"/>
+                    </children>
+                </HBox>
+                <ListView fx:id="listaTemporadas" prefHeight="100"/>
+            </children>
+        </VBox>
+    </children>
+</VBox>

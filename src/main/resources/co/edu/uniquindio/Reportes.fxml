@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.ReportesController" spacing="10">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    <children>
+        <Label text="Reportes" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <children>
+                <Label text="Desde"/>
+                <DatePicker fx:id="dpInicio"/>
+                <Label text="Hasta"/>
+                <DatePicker fx:id="dpFin"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Button text="Ocupación por apartamento" onAction="#ocupacion"/>
+                <Button text="Ingresos del periodo" onAction="#ingresos"/>
+                <Button text="Reservas por canal" onAction="#reservasPorCanal"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Button text="Saldos pendientes" onAction="#saldosPendientes"/>
+                <Button text="Apartamentos con más novedades" onAction="#novedades"/>
+                <Button text="Conflictos de canal" onAction="#conflictos"/>
+            </children>
+        </HBox>
+        <TextArea fx:id="areaResultado" editable="false" prefRowCount="16"/>
+    </children>
+</VBox>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.ReservasController" spacing="10">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    <children>
+        <Label text="Nueva reserva" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <GridPane hgap="10" vgap="8">
+            <children>
+                <Label text="Canal:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cbCanal" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Código externo:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <TextField fx:id="txtCodigoExterno" promptText="Código de la plataforma" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                <Label text="Titular:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cbHuesped" promptText="Seleccione" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Apartamento:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <ComboBox fx:id="cbApartamento" promptText="Seleccione" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                <Label text="Entrada:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpEntrada" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Salida:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                <DatePicker fx:id="dpSalida" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            </children>
+        </GridPane>
+        <Label text="Ocupantes (las personas que se alojan con el titular):"/>
+        <HBox spacing="10">
+            <children>
+                <TextField fx:id="txtNombreOcupante" promptText="Nombre del ocupante"/>
+                <DatePicker fx:id="dpNacimientoOcupante" promptText="Fecha de nacimiento"/>
+                <Button text="Agregar ocupante" onAction="#agregarOcupante"/>
+                <Button text="Quitar ocupante" onAction="#quitarOcupante"/>
+            </children>
+        </HBox>
+        <ListView fx:id="listaOcupantes" prefHeight="80"/>
+        <HBox spacing="10">
+            <children>
+                <Button text="Cotizar" onAction="#cotizar"/>
+                <Button text="Crear reserva" onAction="#crearReserva"/>
+            </children>
+        </HBox>
+        <TextArea fx:id="areaCotizacion" editable="false" prefRowCount="6"/>
+        <Label text="Reservas" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <ListView fx:id="listaReservas" prefHeight="200"/>
+        <HBox spacing="10">
+            <children>
+                <Button text="Cancelar" onAction="#cancelar"/>
+                <HBox fx:id="accionesRecepcion" spacing="10">
+                    <children>
+                        <Button text="Confirmar" onAction="#confirmar"/>
+                        <Button text="Check-in" onAction="#checkIn"/>
+                        <Button text="Check-out" onAction="#checkOut"/>
+                        <Button text="Declarar no-show" onAction="#noShow"/>
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+        <Label fx:id="lblAyudaHuesped" text="Su reserva queda pendiente hasta que pague el anticipo del 30 % en la pestaña de pagos."/>
+    </children>
+</VBox>

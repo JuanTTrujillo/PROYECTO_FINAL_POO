@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.LoginController" spacing="10" alignment="CENTER">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    <children>
+        <Label text="Aparta-Suites UQ" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Label text="Sistema de Gestión de Alojamiento"/>
+        <TextField fx:id="txtUsuario" promptText="Usuario"/>
+        <PasswordField fx:id="txtContrasena" promptText="Contraseña"/>
+        <Button text="Ingresar" onAction="#ingresar" maxWidth="Infinity"/>
+        <Button text="Registrarme como huésped" onAction="#registrarse" maxWidth="Infinity"/>
+    </children>
+</VBox>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.CrearAdministradorController" spacing="10">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    <children>
+        <Label text="Bienvenido al SGA" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+        <Label text="Es la primera vez que se abre el sistema. Cree la cuenta del administrador."/>
+        <GridPane hgap="10" vgap="8">
+            <children>
+                <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Documento:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDocumento" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Fecha de nacimiento:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpNacimiento" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Teléfono:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtTelefono" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label text="Correo:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtCorreo" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Label text="Usuario:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtUsuario" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                <Label text="Contraseña:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <PasswordField fx:id="txtContrasena" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            </children>
+        </GridPane>
+        <Button text="Crear administrador" onAction="#crearAdministrador"/>
+    </children>
+</VBox>

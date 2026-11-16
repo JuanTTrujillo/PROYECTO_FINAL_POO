@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.PrincipalController">
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="8" right="15" bottom="8" left="15"/>
+            </padding>
+            <children>
+                <Label fx:id="lblUsuario"/>
+                <Button text="Cerrar sesión" onAction="#cerrarSesion"/>
+            </children>
+        </HBox>
+    </top>
+    <center>
+        <TabPane fx:id="pestanas" tabClosingPolicy="UNAVAILABLE"/>
+    </center>
+</BorderPane>

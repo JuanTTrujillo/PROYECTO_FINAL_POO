@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.PagosController" spacing="10">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    <children>
+        <Label text="Folio de la reserva" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <Label text="Seleccione una reserva:"/>
+        <ListView fx:id="listaReservas" prefHeight="180" onMouseClicked="#mostrarFolio"/>
+        <TextArea fx:id="areaFolio" editable="false" prefRowCount="10"/>
+        <Label text="Registrar pago o abono" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <children>
+                <TextField fx:id="txtMontoPago" promptText="Monto"/>
+                <ComboBox fx:id="cbMedio"/>
+                <Button text="Registrar pago" onAction="#registrarPago"/>
+            </children>
+        </HBox>
+        <VBox fx:id="seccionCargo" spacing="10">
+            <children>
+                <Label text="Servicio adicional" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <HBox spacing="10">
+                    <children>
+                        <TextField fx:id="txtDescripcionCargo" promptText="Ej: desayuno, lavandería"/>
+                        <TextField fx:id="txtMontoCargo" promptText="Monto"/>
+                        <Button text="Agregar cargo" onAction="#registrarCargo"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <Label text="Los cargos y pagos no se pueden modificar ni eliminar."/>
+    </children>
+</VBox>
