@@ -1,17 +1,65 @@
 package co.edu.uniquindio;
+import java.util.ArrayList;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+public class CuentaPagar {
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+    private ArrayList<Cargo> listaCargos;
+    private ArrayList<Pago> listaPagos;
+
+    public CuentaPagar() {
+        listaCargos = new ArrayList<>();
+        listaPagos = new ArrayList<>();
+    }
+
+    public void registrarCargo(Cargo cargo) {
+        if (cargo != null) {
+            listaCargos.add(cargo);
         }
+    }
+
+    public void registrarPago(Pago pago) {
+        if (pago != null) {
+            listaPagos.add(pago);
+        }
+    }
+
+    public int calcularTotalCargos() {
+        int total = 0;
+
+        for (int i = 0; i < listaCargos.size(); i++) {
+            total += listaCargos.get(i).getMonto();
+        }
+
+        return total;
+    }
+
+    public int calcularTotalPagos() {
+        int total = 0;
+
+        for (int i = 0; i < listaPagos.size(); i++) {
+            total += listaPagos.get(i).getMonto();
+        }
+
+        return total;
+    }
+
+    public int calcularSaldo() {
+        return calcularTotalCargos() - calcularTotalPagos();
+    }
+
+    public ArrayList<Cargo> getListaCargos() {
+        return listaCargos;
+    }
+
+    public ArrayList<Pago> getListaPagos() {
+        return listaPagos;
+    }
+
+    public ArrayList<Pago> getPagos() {
+        return listaPagos;
+    }
+
+    public ArrayList<Cargo> getCargos() {
+        return listaCargos;
     }
 }
