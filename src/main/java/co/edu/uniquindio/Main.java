@@ -1,17 +1,44 @@
 package co.edu.uniquindio;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+public class Main {
+
+    public static void main(String[] args) {
+
+        Alojamiento alojamiento = new Alojamiento("Aparta-Suites UQ");
+
+        Apartamento apto1 = new Apartamento("A101", "Suite Montaña", 2, 4, 80000, 100000, 130000);
+        Apartamento apto2 = new Apartamento("A102", "Suite Valle", 3, 6, 70000, 90000, 120000);
+        alojamiento.registrarApartamento(apto1);
+        alojamiento.registrarApartamento(apto2);
+
+        Administrador admin = new Administrador("Laura Gómez", LocalDate.of(1988, 4, 12), "1094001",
+                "3001112233", "laura@apartasuites.com", "admin", "admin123");
+        Recepcionista recepcionista = new Recepcionista("Carlos Ruiz", LocalDate.of(1997, 9, 3), "1094002",
+                "3004445566", "carlos@apartasuites.com", "recepcion", "recep123");
+        alojamiento.registrarEmpleado(admin);
+        alojamiento.registrarEmpleado(recepcionista);
+
+        Huesped huesped = new Huesped("Ana Torres", LocalDate.of(1995, 1, 20), "1094100",
+                "3107778899", "ana@correo.com", "ana", "ana123");
+        alojamiento.registrarHuesped(huesped);
+
+        ArrayList<Ocupante> ocupantes = new ArrayList<>();
+        ocupantes.add(new Ocupante("Juan Torres", LocalDate.of(1993, 6, 15)));
+        ocupantes.add(new Ocupante("Sofía Torres", LocalDate.of(2022, 3, 8)));
+
+        LocalDate entrada = LocalDate.now().plusDays(10);
+        LocalDate salida = entrada.plusDays(2);
+
+        int personasQuePagan = 0;
+        if (huesped.calcularEdad(entrada) >= 6) {
+            personasQuePagan++;
         }
-    }
-}
+        for (int i = 0; i < ocupantes.size(); i++) {
+            if (ocupantes.get(i).calcularEdad(entrada) >= 6) {
+                personasQuePagan++;
+            }
+        }

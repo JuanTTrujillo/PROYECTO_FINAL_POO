@@ -21,7 +21,7 @@ public class Cotizacion {
 
     public void agregarNoche(DetalleNoche noche) {
         detalle.add(noche);
-        total += noche.getSubtotal();
+        total += noche.calcularSubtotal();
     }
 
     public int getCantidadNoches() {
