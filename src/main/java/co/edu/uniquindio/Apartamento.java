@@ -176,4 +176,7 @@ public class Apartamento implements Desactivable {
     public ArrayList<Novedad> getNovedades() {
         return novedades;
     }
+
+
+
 }
