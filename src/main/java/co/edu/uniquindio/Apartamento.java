@@ -19,6 +19,7 @@ public class Apartamento implements Desactivable {
     private ArrayList<Bloqueo> bloqueos;
     private ArrayList<Novedad> novedades;
 
+
     public Apartamento(String codigo, String nombre, int numeroDormitorios, int capacidadMaxima,
                        int tarifaBaja, int tarifaMedia, int tarifaAlta) {
         this.codigo = codigo;
@@ -28,15 +29,16 @@ public class Apartamento implements Desactivable {
         this.tarifaBaja = tarifaBaja;
         this.tarifaMedia = tarifaMedia;
         this.tarifaAlta = tarifaAlta;
-        this.estado = EstadoApartamento.PREPARADO;
-        this.motivoFueraServicio = "";
-        this.activo = true;
-        this.caracteristicas = new ArrayList<>();
+        this.estado = EstadoApartamento.PREPARADO;   // nace listo
+        this.motivoFueraServicio = "";               // sin motivo al inicio
+        this.activo = true;                          // nace activo
+        this.caracteristicas = new ArrayList<>();    // listas vacias
         this.bloqueos = new ArrayList<>();
         this.novedades = new ArrayList<>();
     }
 
-    public int getTarifa(TipoTemporada temporada) {
+
+    public int consultarTarifa(TipoTemporada temporada) {
         if (temporada == TipoTemporada.ALTA) {
             return tarifaAlta;
         } else if (temporada == TipoTemporada.MEDIA) {
@@ -46,26 +48,30 @@ public class Apartamento implements Desactivable {
         }
     }
 
+    // Cambia el estado a FUERA_SERVICIO exige motivo
     public boolean cambiarEstado(EstadoApartamento nuevo, String motivo) {
         if (nuevo == EstadoApartamento.FUERA_SERVICIO) {
-            if (motivo == null || motivo.isEmpty()) {
+            if (motivo == null || motivo.isBlank()) {
                 return false;
             }
             motivoFueraServicio = motivo;
         } else {
-            motivoFueraServicio = "";
+            motivoFueraServicio = "";   // si sale de fuera de servicio, se borra el motivo
         }
         estado = nuevo;
         return true;
     }
 
+    // Guarda una novedad
     public void registrarNovedad(Novedad n) {
         novedades.add(n);
     }
 
+
     public int contarNovedades() {
         return novedades.size();
     }
+
 
     @Override
     public void desactivar() {
@@ -78,13 +84,19 @@ public class Apartamento implements Desactivable {
     }
 
 
-
-    public void actualizarDatos(String nombre, int numeroDormitorios, int capacidadMaxima, ArrayList<String> caracteristicas) {
+    public boolean actualizarDatos(String nombre, int numeroDormitorios, int capacidadMaxima,
+                                   ArrayList<String> caracteristicas) {
+        if (nombre == null || nombre.isBlank() || numeroDormitorios <= 0
+                || capacidadMaxima <= 0 || caracteristicas == null) {
+            return false;
+        }
         this.nombre = nombre;
         this.numeroDormitorios = numeroDormitorios;
         this.capacidadMaxima = capacidadMaxima;
-        this.caracteristicas = caracteristicas;
+        this.caracteristicas = new ArrayList<>(caracteristicas);
+        return true;
     }
+
 
     public boolean actualizarTarifas(int tarifaBaja, int tarifaMedia, int tarifaAlta) {
         if (tarifaBaja <= 0 || tarifaMedia <= 0 || tarifaAlta <= 0) {
@@ -96,6 +108,7 @@ public class Apartamento implements Desactivable {
         return true;
     }
 
+    // Agrega un bloqueo
     public boolean agregarBloqueo(Bloqueo b) {
         if (!b.fechaFin().isAfter(b.fechaInicio())) {
             return false;
@@ -103,6 +116,7 @@ public class Apartamento implements Desactivable {
         bloqueos.add(b);
         return true;
     }
+
 
     public boolean tieneBloqueoEn(LocalDate entrada, LocalDate salida) {
         for (int i = 0; i < bloqueos.size(); i++) {
@@ -113,6 +127,8 @@ public class Apartamento implements Desactivable {
         return false;
     }
 
+
+
     public String getCodigo() {
         return codigo;
     }
@@ -121,96 +137,43 @@ public class Apartamento implements Desactivable {
         return nombre;
     }
 
-    public int getCapacidadMaxima() {
-
-        return capacidadMaxima;
-    }
-
-    public EstadoApartamento getEstado() {
-        return estado;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public int getNumeroDormitorios() {
         return numeroDormitorios;
     }
 
-    public void setNumeroDormitorios(int numeroDormitorios) {
-        this.numeroDormitorios = numeroDormitorios;
-    }
-
-    public void setCapacidadMaxima(int capacidadMaxima) {
-        this.capacidadMaxima = capacidadMaxima;
-    }
-
-    public int getTarifaBaja() {
-        return tarifaBaja;
-    }
-
-    public void setTarifaBaja(int tarifaBaja) {
-        this.tarifaBaja = tarifaBaja;
+    public int getCapacidadMaxima() {
+        return capacidadMaxima;
     }
 
     public ArrayList<String> getCaracteristicas() {
         return caracteristicas;
     }
 
-    public void setCaracteristicas(ArrayList<String> caracteristicas) {
-        this.caracteristicas = caracteristicas;
+    public int getTarifaBaja() {
+        return tarifaBaja;
     }
 
     public int getTarifaMedia() {
         return tarifaMedia;
     }
 
-    public void setTarifaMedia(int tarifaMedia) {
-        this.tarifaMedia = tarifaMedia;
-    }
-
     public int getTarifaAlta() {
         return tarifaAlta;
     }
 
-    public void setTarifaAlta(int tarifaAlta) {
-        this.tarifaAlta = tarifaAlta;
+    public EstadoApartamento getEstado() {
+        return estado;
     }
 
     public String getMotivoFueraServicio() {
         return motivoFueraServicio;
     }
 
-    public void setMotivoFueraServicio(String motivoFueraServicio) {
-        this.motivoFueraServicio = motivoFueraServicio;
-    }
-
-    public void setEstado(EstadoApartamento estado) {
-        this.estado = estado;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
     public ArrayList<Bloqueo> getBloqueos() {
         return bloqueos;
     }
 
-    public void setBloqueos(ArrayList<Bloqueo> bloqueos) {
-        this.bloqueos = bloqueos;
-    }
-
     public ArrayList<Novedad> getNovedades() {
         return novedades;
-    }
-
-    public void setNovedades(ArrayList<Novedad> novedades) {
-        this.novedades = novedades;
     }
 }

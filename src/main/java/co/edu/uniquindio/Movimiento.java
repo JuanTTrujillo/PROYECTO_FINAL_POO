@@ -26,15 +26,4 @@ public abstract class Movimiento {
         return descripcion;
     }
 
-    public void setMonto(int monto) {
-        this.monto = monto;
-    }
-
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 }

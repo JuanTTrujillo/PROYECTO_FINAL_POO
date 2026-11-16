@@ -15,7 +15,4 @@ public class Pago extends Movimiento {
         return medio;
     }
 
-    public void setMedio(MedioPago medio) {
-        this.medio = medio;
-    }
 }
