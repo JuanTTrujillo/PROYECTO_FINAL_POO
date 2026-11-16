@@ -1,13 +1,14 @@
 package co.edu.uniquindio;
-import java.util.LinkedList;
+import java.util.ArrayList;
+
 public class CuentaPagar {
 
-    private LinkedList<Cargo> listaCargos;
-    private LinkedList<Pago> listaPagos;
+    private ArrayList<Cargo> listaCargos;
+    private ArrayList<Pago> listaPagos;
 
     public CuentaPagar() {
-        listaCargos = new LinkedList<>();
-        listaPagos = new LinkedList<>();
+        listaCargos = new ArrayList<>();
+        listaPagos = new ArrayList<>();
     }
 
     public void registrarCargo(Cargo cargo) {
@@ -21,6 +22,7 @@ public class CuentaPagar {
             listaPagos.add(pago);
         }
     }
+
     public int calcularTotalCargos() {
         int total = 0;
 
@@ -45,12 +47,19 @@ public class CuentaPagar {
         return calcularTotalCargos() - calcularTotalPagos();
     }
 
-    public LinkedList<Cargo> getListaCargos() {
+    public ArrayList<Cargo> getListaCargos() {
         return listaCargos;
     }
 
-    public LinkedList<Pago> getListaPagos() {
+    public ArrayList<Pago> getListaPagos() {
         return listaPagos;
     }
-}
 
+    public ArrayList<Pago> getPagos() {
+        return listaPagos;
+    }
+
+    public ArrayList<Cargo> getCargos() {
+        return listaCargos;
+    }
+}
