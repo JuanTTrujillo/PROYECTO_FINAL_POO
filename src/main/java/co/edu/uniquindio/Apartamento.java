@@ -29,10 +29,10 @@ public class Apartamento implements Desactivable {
         this.tarifaBaja = tarifaBaja;
         this.tarifaMedia = tarifaMedia;
         this.tarifaAlta = tarifaAlta;
-        this.estado = EstadoApartamento.PREPARADO;   // nace listo
-        this.motivoFueraServicio = "";               // sin motivo al inicio
-        this.activo = true;                          // nace activo
-        this.caracteristicas = new ArrayList<>();    // listas vacias
+        this.estado = EstadoApartamento.PREPARADO;
+        this.motivoFueraServicio = "";
+        this.activo = true;
+        this.caracteristicas = new ArrayList<>();
         this.bloqueos = new ArrayList<>();
         this.novedades = new ArrayList<>();
     }
